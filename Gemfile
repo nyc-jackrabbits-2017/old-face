@@ -24,6 +24,7 @@ gem 'pry'
 gem 'react-rails'
 gem 'devise'
 gem 'bootstrap-sass'
+gem 'faker'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
