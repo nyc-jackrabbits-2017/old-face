@@ -5,7 +5,7 @@
 		<label>Your Friend list</label>
 		<% @friends.each do |friend|%>
 		  <%= friend.username %><br>
-		  <%= link_to  %>
+		  
 		<% end %>
 	</p>
 
@@ -16,7 +16,7 @@
 
 		<%= button_to 'Add this person', user_friendship_path(@user,friendrequest),:method => :patch %>
 
-		 <%= button_to 'Delete', user_friendship_path(@user,friendrequest),:method => :delete   %>
+		 <%= button_to 'Go Away', user_friendship_path(@user,friendrequest),:method => :delete   %>
 
 		<% end %>
 	</p>
