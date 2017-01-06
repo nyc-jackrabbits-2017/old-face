@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   devise_for :users
 
   get 'users/:id/friendships/new' => 'friendships#new'
-
+  post 'users/:id/friendships' => 'friendships#create'
 end

@@ -1,11 +1,15 @@
 <div class="container">
 
   <section class="sidebar">
-    <h1>invite a friend</h1>
+    <% if @friendship %>
+      <ul>
+        <% @friendship.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
-    <form id="friend_request" action="/users/1/friendships/" method="post">
-      <label for="friend_name">Friend name:</label>
-      <input type="text" name="friend_name">
+    <form id="friend_request" action="/users/<%= @receiver.id %>/friendships" method="post">
       <input type="submit" value="invite friend">
     </form>
   </section>
