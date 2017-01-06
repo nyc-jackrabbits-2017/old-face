@@ -5,6 +5,8 @@
 		<label>Your Friend list</label>
 		<% @friends.each do |friend|%>
 		  <%= friend.username %><br>
+
+		  <!-- remember to add link to the name to go to friend`s profile -->
 		  
 		<% end %>
 	</p>
@@ -14,9 +16,9 @@
 		<% @pending_incoming.each do |friendrequest|%>
 		  <%= friendrequest.username %><br>
 
-		<%= button_to 'Add this person', user_friendship_path(@user,friendrequest),:method => :patch %>
+		<%= button_to 'Add this person', user_friendship_path(current_user,friendrequest),:method => :patch %>
 
-		 <%= button_to 'Go Away', user_friendship_path(@user,friendrequest),:method => :delete   %>
+		 <%= button_to 'Go Away', user_friendship_path(current_user,friendrequest),:method => :delete   %>
 
 		<% end %>
 	</p>
