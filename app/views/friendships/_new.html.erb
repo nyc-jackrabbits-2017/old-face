@@ -9,7 +9,7 @@
       </ul>
     <% end %>
 
-    <form id="friend_request" action="/users/<%= @receiver.id %>/friendships" method="post">
+    <form id="friend_request" action="/users/<%= @user.id %>/friendships" method="post">
       <input type="submit" value="invite friend">
     </form>
   </section>

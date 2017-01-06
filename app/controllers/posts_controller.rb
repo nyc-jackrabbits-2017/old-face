@@ -7,7 +7,6 @@ class PostsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @post = current_user.posts.create(post_params)
-    binding.pry
     if @post.save
       redirect_to user_posts_path(@user)
     else

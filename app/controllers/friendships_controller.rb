@@ -2,28 +2,28 @@ class FriendshipsController < ApplicationController
 
   skip_before_action :verify_authenticity_token
 
-  def new
-    @receiver = User.find_by(id: params[:id].to_i)
-  end
+  # def new
+  #   @receiver = User.find_by(id: params[:id].to_i)
+  # end
 
   def create
-    @receiver = User.find_by(id: params[:id].to_i)
+    @user = User.find_by(id: params[:user_id])
     @sender = current_user
-    @friendship = Friendship.new(receiver: @receiver, sender: @sender)
+    @friendship = Friendship.new(receiver: @user, sender: @sender)
     if @friendship.save
       redirect_to '/'
     else
-      render action: 'new'
+      render 'posts/index'
     end
   end
 
   # show a list of friends and pending requests
-  def index
+  # def index
 
-  	@friends = current_user.friends
-  	@pending_incoming = current_user.pending_incoming_requests
-  	@pending_outgoing =	current_user.pending_outgoing_requests
-  end
+  # 	@friends = current_user.friends
+  # 	@pending_incoming = current_user.pending_incoming_requests
+  # 	@pending_outgoing =	current_user.pending_outgoing_requests
+  # end
 
 
   def update

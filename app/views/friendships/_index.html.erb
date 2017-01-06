@@ -1,19 +1,20 @@
 <h3>Friend List</h3>
 
 <div>
+	<% if own_list?(@user) %>
 	<p>
 		<label>Your Friend list</label>
-		<% @friends.each do |friend|%>
-		  <%= friend.username %><br>
+		<% current_user.friends.each do |friend|%>
+		  <%= link_to friend.username, user_posts_path(friend) %><br>
 
 		  <!-- remember to add link to the name to go to friend`s profile -->
-		  
+
 		<% end %>
 	</p>
 
 	<p>
 		<label> Incoming Request</label>
-		<% @pending_incoming.each do |friendrequest|%>
+		<% current_user.pending_incoming_requests.each do |friendrequest|%>
 		  <%= friendrequest.username %><br>
 
 		<%= button_to 'Add this person', user_friendship_path(current_user,friendrequest),:method => :patch %>
@@ -25,9 +26,21 @@
 
 	<p>
 		<label>Outgoing Request</label>
-		<% @pending_outgoing.each do |friendrequest|%>
+		<% current_user.pending_outgoing_requests.each do |friendrequest|%>
 		  <%= friendrequest.username %><br>
 		<% end %>
 	</p>
+	<% else %>
+		<p>
+			<label>Your Friend list</label>
+			<% @user.friends.each do |friend|%>
+			  <%= link_to friend.username, user_posts_path(friend) %><br>
+
+			  <!-- remember to add link to the name to go to friend`s profile -->
+
+			<% end %>
+		</p>
+
+	<% end %>
 
 </div>

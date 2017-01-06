@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates_presence_of :username
+
   has_many :posts, foreign_key: "poster_id", class_name: "Post"
   has_many :wall_posts, foreign_key: "receiver_id", class_name: "Post"
 
@@ -42,8 +44,8 @@ class User < ApplicationRecord
   end
 
   def self.search(string)
-    return all if string.empty?
+    return all.order(:username) if string.empty?
     query = "%#{string}%"
-    where("username LIKE ?", query)
+    where("username LIKE ?", query).order(:username)
   end
 end
