@@ -40,4 +40,10 @@ class User < ApplicationRecord
   def pending_outgoing_requests
     self.receivers.pending
   end
+
+  def self.search(string)
+    return all if string.empty?
+    query = "%#{string}%"
+    where("username LIKE ?", query)
+  end
 end
