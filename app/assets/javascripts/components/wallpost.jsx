@@ -1,7 +1,7 @@
 class PostToWall extends React.Component {
 
   render() {
-    debugger
+
     let {title, body, receiver_id, poster_id } = this.props.post ;
 
     return(
