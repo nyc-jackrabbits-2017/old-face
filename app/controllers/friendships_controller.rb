@@ -8,33 +8,27 @@ class FriendshipsController < ApplicationController
   	@pending_outgoing =	@user.pending_outgoing_requests
   end 
 
-# add friend
-  def new
+
+  def update
+    
+    @user = User.find(params[:user_id])
+  	@friendship = @user.friendships_1.find_by(sender_id: params[:id])
+  	# binding.pry
+  	@friendship.update_attributes(accepted: true)
+ 
+
+   redirect_to root_url
+   #redirect to the index page
+ 
   end 
 
- def create
- 	# need to use current_user, but cannot login right now
- 	binding.pry
- 	# error: @user is nil, do not know why, but other info can be generated
- 	# just @user is nill, cannnot call other method
-
- 	@user = User.find(params[:user_id])
- 	@user.friendships_2.find_by_id(params[:sender_id]).accepted = true
-
-
- 	redirect_to root_url
-
- 	# @friendship = @user.friendships.build(sender_id: params[:sender_id])
- 	# @friendship = Friendship.new(receiver_id: params[:user_id], sender_id: params[:sender_id])
- 	# if @friendship.save
- 	# 	flash[:notice] = "Added Friend!"
- 	# 	redirect_to root_url
- 	# else 
- 	# 	flash[:error] = "Error occurred when adding friend"
- 	# 	redirect_to root_url
- 	# end 
-
- end 
+  def destroy
+  	@user = User.find(params[:user_id])
+  	@friendship = @user.friendships_1.find_by(sender_id: params[:id])
+  	@friendship.destroy
+  	redirect_to root_url
+  	#redirect to the index page
+  end 
 
 
 
