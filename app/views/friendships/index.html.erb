@@ -1,0 +1,28 @@
+<h3>Friend List</h3>
+
+<div>
+	<p>
+		<label>Your Friend list</label>
+		<% @friends.each do |friend|%>
+		  <%= friend.username %><br>
+		<% end %>
+	</p>
+
+	<p>
+		<label> Incoming Request</label>
+		<% @pending_incoming.each do |friend|%>
+		  <%= friend.username %>
+		  <%= link_to 'Add this person',user_friendships_path(:sender_id => friend.id),method: :post %><br>
+		
+		  
+		<% end %>
+	</p>
+
+	<p>
+		<label>Outgoing Request</label>
+		<% @pending_outgoing.each do |friend|%>
+		  <%= friend.username %><br>
+		<% end %>
+	</p>
+
+</div>
