@@ -1,0 +1,25 @@
+<div class="container">
+<h1> User Posts </h1>
+
+<h2> <%= @user.username %> Posts </h2>
+<ul>
+  <% @user.posts.each do |post| %>
+  <li><p><%= post.title %></p>
+      <p><%= post.receiver.username %></p>
+      <p><%= post.body %></p>
+  </li>
+  <% end %>
+</ul>
+
+<h2> <%= @user.username %> Wall Posts</h2>
+<ul>
+  <% @user.wall_posts.each do |post| %>
+  <li><p><%= post.title %></p>
+      <p><%= link_to post.poster.username, user_posts_path(post.poster) %></p>
+      <p><%= post.body %></p>
+  </li>
+  <% end %>
+</ul>
+
+<%= render partial: 'posts/form' %>
+</div>
