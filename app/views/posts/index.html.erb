@@ -1,5 +1,5 @@
 <div class="container">
-  <%= render partial: 'friendships/new' if !friend?(@user) %>
+  <%= render partial: 'friendships/new' if invitable?(@user) %>
 <h1> User Posts </h1>
 
 <h2> <%= @user.username %> Posts </h2>

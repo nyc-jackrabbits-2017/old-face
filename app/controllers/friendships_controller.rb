@@ -10,7 +10,6 @@ class FriendshipsController < ApplicationController
     @user = User.find_by(id: params[:user_id])
     @sender = current_user
     @friendship = Friendship.new(receiver: @user, sender: @sender)
-    binding.pry
     if @friendship.save
       redirect_to '/'
     else

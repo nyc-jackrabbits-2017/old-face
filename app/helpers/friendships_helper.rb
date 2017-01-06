@@ -1,6 +1,6 @@
 module FriendshipsHelper
-  def friend?(user)
-    x = current_user.friends.index(user)
+  def invitable?(user)
+    current_user.friends.index(user) == nil && current_user != user
   end
 
   def own_list?(user)
