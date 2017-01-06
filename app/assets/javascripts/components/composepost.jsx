@@ -2,6 +2,22 @@ class ComposePost extends React.Component {
 
   handleSubmit(event){
     event.preventDefault()
+    let path = window.location.pathname
+    const titleBox = this.refs.titleBox
+    const bodyBox = this.refs.bodyBox
+
+    $.ajax({
+      url: path + '.json',
+      method: 'POST',
+      data: {
+        post: {
+          title: titleBox.value,
+          body: bodyBox.value
+        }
+      }
+    }).done(function(response){
+        console.log(response)
+      })
   }
 
   render() {
