@@ -42,8 +42,8 @@ class User < ApplicationRecord
   end
 
   def self.search(string)
-    return all if string.empty?
+    return all.order(:username) if string.empty?
     query = "%#{string}%"
-    where("username LIKE ?", query)
+    where("username LIKE ?", query).order(:username)
   end
 end

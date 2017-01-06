@@ -1,4 +1,5 @@
 <div class="container">
+  <%= render partial: 'friendships/new' if !friend?(@user) %>
 <h1> User Posts </h1>
 
 <h2> <%= @user.username %> Posts </h2>
@@ -22,4 +23,7 @@
 </ul>
 
 <%= render partial: 'posts/form' %>
+</div>
+<div>
+  <%= render partial: 'friendships/index' %>
 </div>
