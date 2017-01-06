@@ -1,11 +1,10 @@
 <div class="container">
-  <%= react_component 'WallPost' %>
+
 
   <%= render partial: 'friendships/new' if invitable?(@user) %>
 <h1> User Posts </h1>
   <div class=".col-md-8">
-    <h2> <%= @user.username %> Posts </h2>
-
+        <%= react_component 'WallPost' %>
 
     <h2> <%= @user.username %> Wall Posts</h2>
     <ul>
