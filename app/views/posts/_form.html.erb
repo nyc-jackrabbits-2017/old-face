@@ -1,0 +1,21 @@
+<h2>Make a Post on this Wall</h2>
+  <%= form_for([@user, @user.wall_posts.build], html: { :class => "navbar-form navbar-left"})  do |f| %>
+
+    <p class="form-group" >
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </p>
+
+    <p class="form-group">
+      <%= f.label :body %><br>
+      <%= f.text_area :body %>
+    </p>
+    <p class="form-group">
+      <%= f.hidden_field :receiver_id, :value => @user.id %>
+    <p class="btn btn-default" >
+      <%= f.submit %>
+    </p>
+    <% end %>
+
+
+
