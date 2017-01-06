@@ -2,6 +2,24 @@ class PostsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
+    # render json: { posts: @user.posts,
+    #                user: @user,
+    #                friends: @user.friends,
+    #                pending_incoming_friends: @user.pending_incoming_requests,
+    #                pending_outgoing_friends: @user.pending_outgoing_requests
+    #              }
+
+    respond_to do |format|
+      format.html
+      format.json { render json: { posts: @user.posts,
+                   wall_posts: @user.wall_posts,
+                   user: @user,
+                   friends: @user.friends,
+                   pending_incoming_friends: @user.pending_incoming_requests,
+                   pending_outgoing_friends: @user.pending_outgoing_requests
+                 }
+                }
+    end
   end
 
   def create
